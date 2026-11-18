@@ -32,6 +32,9 @@ function NavBar({ favoritesCount }) {
           <Nav.Link as={Link} to="favorites">
             Favorites ({favoritesCount})
           </Nav.Link>
+          <Nav.Link as={Link} to="review">
+            Review
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
