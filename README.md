@@ -1,3 +1,7 @@
+# Rick and Morty React
+
+**Live Demo** https://szureti.github.io/Rick-and-Morty-React/
+
 ## See [Progress.md](./Progress.md) for the feature checklist.
 
 # Rick and Morty React I
