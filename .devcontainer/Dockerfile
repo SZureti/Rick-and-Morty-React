@@ -19,5 +19,14 @@ RUN service postgresql start && \
 
 EXPOSE 5432
 
+# Install Cypress browser dependencies (Xvfb + shared libs)
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && for pkg in xvfb libnss3 libxss1 libxtst6 libxshmfence1 libgbm1 xauth \
+    libgtk-3-0t64 libgtk2.0-0t64 libasound2t64 libatk1.0-0t64 libatk-bridge2.0-0t64 \
+    libcups2t64 libnotify4 libpango-1.0-0 libcairo2 libxcomposite1 libxdamage1 \
+    libxfixes3 libxrandr2 libxkbcommon0 libdrm2; do apt-get install -y "$pkg" 2>/dev/null; done \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # Start PostgreSQL automatically
 CMD ["bash", "-c", "service postgresql start && tail -f /dev/null"]

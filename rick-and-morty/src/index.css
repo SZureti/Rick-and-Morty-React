@@ -1,0 +1,147 @@
+/* ====== Rick and Morty brand theme ====== */
+:root {
+  --rm-green: #a6ce39; /* portal lime  */
+  --rm-teal: #29abca; /* slime teal   */
+  --rm-navy: #0e2a33; /* deep navy background */
+  --rm-surface: #16323c; /* neutral card / nav surface */
+  --rm-navbar: #081a20; /* darker than the navy page background*/
+  --rm-text: #e8eef0; /* soft near-white text */
+
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--rm-navy);
+  color: var(--rm-text);
+}
+
+/* Headings in portal lime */
+h1,
+h2 {
+  color: var(--rm-green);
+}
+
+/* Navbar: neutral surface with a lime underline */
+.navbar {
+  background-color: var(--rm-navbar) !important;
+  border-bottom: 3px solid var(--rm-green);
+}
+
+/* Cards: neutral surface, teal edge, 3D shadow, lift on hover */
+.card {
+  background-color: var(--rm-surface);
+  border: 1px solid rgba(41, 171, 202, 0.25);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.55);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.65);
+}
+
+/* Primary buttons (Previous / Next) in portal lime */
+.btn-primary {
+  --bs-btn-bg: var(--rm-green);
+  --bs-btn-border-color: var(--rm-green);
+  --bs-btn-color: #0e2a33;
+  --bs-btn-hover-bg: #b8dd4f;
+  --bs-btn-hover-border-color: #b8dd4f;
+  --bs-btn-hover-color: #0e2a33;
+  --bs-btn-disabled-bg: #54663a;
+  --bs-btn-disabled-border-color: #54663a;
+  --bs-btn-disabled-color: #0e2a33;
+}
+
+.watch-btn {
+  background-color: var(--rm-green);
+  color: #0e2a33;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 32px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.watch-btn:hover {
+  background-color: #b8dd4f;
+  transform: translateY(-2px);
+}
+
+/* ====== Character cards ====== */
+
+/* Image wrapper: clips the zoom so the image never spills past the rounded top corners */
+.character-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+/* The image itself scales up slightly when you hover the whole card */
+.character-img-wrap img {
+  transition: transform 0.3s ease;
+  display: block;
+  width: 100%;
+}
+.character-card:hover .character-img-wrap img {
+  transform: scale(1.07);
+}
+
+/* Status dot: sits in the top-right corner of the image */
+.status-dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--rm-surface);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+.status-alive {
+  background-color: #46d369;
+}
+.status-dead {
+  background-color: #e04b4b;
+}
+.status-unknown {
+  background-color: #9aa0a6;
+}
+
+/* Character name in portal lime */
+.character-name {
+  color: var(--rm-green);
+  font-weight: 700;
+}
+
+/* Info rows: label left, value right, thin divider on top */
+.character-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.4rem;
+  margin-top: 0.4rem;
+  border-top: 1px solid rgba(41, 171, 202, 0.2);
+  font-size: 0.9rem;
+}
+.info-label {
+  color: var(--rm-teal);
+  font-weight: 600;
+}
+
+/* --- I turned the cards into clickable links so I needed to fix the styling --- */
+.card-link {
+  text-decoration: none; /* kill the underline */
+  color: inherit; /* keep the lime/teal/white text, not link-blue */
+  display: block; /* Link is inline by default; make it a block */
+  height: 100%; /* so the Card's h-100 has a full-height parent to measure against */
+}
